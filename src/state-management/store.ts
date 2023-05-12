@@ -12,6 +12,16 @@ const useStore = create<Store, any>((set, get) => (
             const store: Store = get();
             set({ ...store, tasks: [...store.tasks, task] });
         },
+        updateTask: (task: TaskEntity) => {
+            const store: Store = get();
+            set({
+                ...store, 
+                tasks: [...store.tasks.map((item: TaskEntity) => {
+                    if (item.id !== task.id) return item;
+                    return task
+                })]
+            });
+        },
         deleteTask: (id: TaskEntity['id']) => {
             const store: Store = get();
             set({ ...store, tasks: [...store.tasks.filter((item: TaskEntity) => item.id !== id)] });

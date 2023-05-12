@@ -8,6 +8,7 @@ export interface DataOfStore {
 
 export interface ActionOfStore {
     addTask: (task: TaskEntity) => void;
+    updateTask: (task: TaskEntity) => void;
     deleteTask: (id: TaskEntity['id']) => void;
     updateTasks: (tasks: Array<TaskEntity>) => void;
     deleteTasks: () => void;
